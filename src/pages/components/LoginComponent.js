@@ -11,7 +11,7 @@ export default function LoginComponent() {
   }, [wallet]);
 
   const Button = useCallback(() => {
-    if (wallet) {
+    if (wallet.isSignedIn()) {
       return (
         <div className="flex rounded-full bg-slate-200">
           <div className="py-3 pl-5 pr-3 text-sm font-medium tracking-wider">
@@ -25,7 +25,7 @@ export default function LoginComponent() {
     }
     return (
       <button
-        onClick={wallet.requestSignIn}
+        onClick={() => wallet.requestSignIn()}
         className="px-5 py-3 text-sm font-medium tracking-wider text-pink-100 bg-pink-600 rounded-full shadow-sm hover:shadow-2xl hover:bg-pink-700"
       >
         Login With Near
